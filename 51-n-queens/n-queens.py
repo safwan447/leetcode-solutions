@@ -1,17 +1,19 @@
 class Solution(object):
     def solveNQueens(self, n):
         res = []
-        board = [['.'] * n for _ in range(n)]
+        board = [['.']*n for i in range(n)]
         cols = set()
-        d1 = set()
+        d1 =set()
         d2 = set()
+
         def bTrack(row):
             if row == n:
-                res.append([''.join(r) for r in board])
-                return
+                res.append([''.join(r) for r in board]) 
+
             for col in range(n):
                 if col in cols or row - col in d1 or row + col in d2:
                     continue
+
                 board[row][col] = 'Q'
                 cols.add(col)
                 d1.add(row - col)
@@ -25,4 +27,4 @@ class Solution(object):
                 d2.remove(row + col)
 
         bTrack(0)
-        return res
+        return res      
